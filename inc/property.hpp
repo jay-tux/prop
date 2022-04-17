@@ -3,7 +3,21 @@
 
 #include "event.hpp"
 
+/**
+ * @brief Main namespace for the properties library.
+ */
 namespace properties {
+/**
+ *  @brief Property type.
+ *  @details This type holds a (reference to) a single value, with getters and
+ * setters. Whenever the value is modified, the property will trigger the
+ * property change event. You can add callbacks which will trigger when the
+ * value is updated using the `operator +(callback)`.
+ *
+ *  @template T The type of the value.
+ *  @template copy Whether or not the value is copied (false means that the
+ * value is a reference to the original value).
+ */
 template <typename T, bool copy = false> struct property {
 public:
   property(T &ref) : ref{ref} {}

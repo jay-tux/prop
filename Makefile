@@ -11,4 +11,12 @@ install:
 coverage:
 	cd test/ && make coverage
 
-.PHONY: test install
+docs: Doxyfile
+	doxygen
+	cd docs/latex/ && make 
+
+clean:
+	rm docs/* -rf
+	cd test && make clean
+
+.PHONY: test install clean docs
