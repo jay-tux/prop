@@ -1,7 +1,9 @@
 test/dep/*
 test/obj/*
 test/html/*
+docs/*
 test/test
 test/coverage.info
 
 !**/.gitkeep
+!docs/conf

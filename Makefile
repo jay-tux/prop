@@ -11,4 +11,15 @@ install:
 coverage:
 	cd test/ && make coverage
 
-.PHONY: test install
+docs: Doxyfile docs/doxygen-awesome-css/Doxyfile
+	doxygen
+	cd docs/latex/ && make
+
+docs/doxygen-awesome-css/Doxyfile:
+	cd docs && git clone https://github.com/jothepro/doxygen-awesome-css
+
+clean:
+	rm docs/* -rf
+	cd test && make clean
+
+.PHONY: test install clean docs
