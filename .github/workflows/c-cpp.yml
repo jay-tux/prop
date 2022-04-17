@@ -23,4 +23,4 @@ jobs:
     - name: gcc version
       run: g++11 -v
     - name: make test
-      run: make test CC=g++11
+      run: make test
