@@ -1,4 +1,5 @@
 test/dep/*
 test/obj/*
+test/test
 
 !**/.gitkeep
