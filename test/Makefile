@@ -1,11 +1,17 @@
 CC=g++
-CXXARGS=-c -Wall -Wextra -pedantic -I../inc/ -g
-LDARGS=
+CXXARGS=-c -Wall -Wextra -pedantic -I../inc/ -g -fprofile-arcs -ftest-coverage
+LDARGS=-fprofile-arcs -ftest-coverage
 
 SOURCES=$(shell find . -name '*.cpp')
 OBJECTS=$(SOURCES:./src/%.cpp=./obj/%.o)
 
 all: runtest
+
+coverage: runtest
+	lcov --directory "obj/" --output-file coverage.info -c \
+		--exclude '*doctest*' --exclude '/usr/*'
+	genhtml coverage.info --output-directory "html/"
+	firefox html/index.html
 
 runtest: ./test
 	./test

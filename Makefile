@@ -8,4 +8,7 @@ install:
 	install -m 644 inc/event.hpp $(INSTALL_LOC)/
 	install -m 644 inc/property.hpp $(INSTALL_LOC)/
 
+coverage:
+	cd test/ && make coverage
+
 .PHONY: test install
