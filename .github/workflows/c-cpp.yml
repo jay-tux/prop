@@ -1,0 +1,27 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ root ]
+  pull_request:
+    branches: [ root ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: update
+      run: sudo apt install gcc-11 libstdc++-11-dev
+    - name: Install Conan
+      id: conan
+      uses: turtlebrowser/get-conan@main
+    - name: Conan version
+      run: echo "${{ steps.conan.outputs.version }}"
+    - uses: actions/checkout@v2
+    - name: make test
+      run: make test
+    # - name: Report LCOV
+    #   uses: zgosalvez/github-actions-report-lcov@v1.4.0
+    #   with:
+    #     coverage-files: test/coverage.info
+    #     github-token: ${{ secrets.GITHUB_TOKEN }}
