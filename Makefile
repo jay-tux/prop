@@ -11,9 +11,12 @@ install:
 coverage:
 	cd test/ && make coverage
 
-docs: Doxyfile
+docs: Doxyfile docs/doxygen-awesome-css/Doxyfile
 	doxygen
-	cd docs/latex/ && make 
+	cd docs/latex/ && make
+
+docs/doxygen-awesome-css/Doxyfile:
+	cd docs && git clone https://github.com/jothepro/doxygen-awesome-css
 
 clean:
 	rm docs/* -rf

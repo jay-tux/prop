@@ -11,7 +11,7 @@ TEST_CASE("Property getters") {
   CHECK(p.operator int &() == val);
   CHECK(p.get() == val);
 
-  const property<int> pc(p);
+  const property<int> pc(val);
 
   CHECK(p.operator int() == val);
   CHECK(p.operator int &() == val);
